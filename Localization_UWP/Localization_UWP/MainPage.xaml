@@ -1,0 +1,45 @@
+﻿<Page
+    x:Class="Localization_UWP.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Localization_UWP"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Page.Resources>
+        <local:LocalizedResourcesConverter x:Key="LocalizedResourcesConverter" />
+    </Page.Resources>
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <TextBlock x:Name="TblTitle"
+                   x:Uid="Title"
+                   Grid.Row="0"
+                   Style="{ThemeResource SubheaderTextBlockStyle}"
+                   Margin="10"
+                   Text="Language: English" />
+        <TextBlock x:Name="TblMessage"
+                   x:Uid="Message"
+                   Grid.Row="1"
+                   Style="{StaticResource SubtitleTextBlockStyle}"
+                   Margin="10"
+                   Text="Hello World!" />
+        <ComboBox x:Name="CbxLanguages"
+                  Grid.Row="2"
+                  Margin="10"
+                  MaxWidth="400"
+                  HorizontalAlignment="Stretch"
+                  SelectionChanged="CbxLanguages_SelectionChanged">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Converter={StaticResource LocalizedResourcesConverter}}" />
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+    </Grid>
+</Page>
