@@ -11,7 +11,7 @@ Learn how to localize your Universal Windows app by selecting the language progr
 ### Set the language
     LocalizedResources.Language = "en-US";
 
-### Localize content in C#
+### Localize content in C-Sharp
     TblTitle.Text = LocalizedResources.GetString("Title/Text");
 
 ### Localize content in XAML
